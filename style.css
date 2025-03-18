@@ -1,0 +1,71 @@
+.css-button-shadow-border--green {
+  min-width: 130px;
+  height: 40px;
+  color: #fff;
+  padding: 5px 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  outline: none;
+  border-radius: 5px;
+  border: none;
+  box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5), 7px 7px 20px 0px rgba(0,0,0,.1), 4px 4px 5px 0px rgba(0,0,0,.1);
+  background: #57cc99;
+}
+.css-button-shadow-border--green:hover {
+  background-color: #80ed99;
+}
+.css-button-shadow-border--green:active {
+  top: 2px;
+}
+
+
+  .css-button-gradient--8 {
+    min-width: 130px;
+    height: 40px;
+    color: #fff;
+    padding: 5px 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    outline: none;
+    border-radius: 5px;
+    border: none;
+    background-size: 120% auto;
+    background-image: linear-gradient(315deg, #7b4397 0%, #dc2430 75%);
+  }
+  .css-button-gradient--8:hover {
+    background-position: right center;
+  }
+  .css-button-gradient--8:active {
+    top: 2px;
+  }
+
+
+
+  .css-button-gradient--7 {
+    min-width: 130px;
+    height: 40px;
+    color: #fff;
+    padding: 5px 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    outline: none;
+    border-radius: 5px;
+    border: none;
+    background-size: 120% auto;
+    background-image: linear-gradient(315deg, #c02425 0%, #f0cb35 75%);
+  }
+  .css-button-gradient--7:hover {
+    background-position: right center;
+  }
+  .css-button-gradient--7:active {
+    top: 2px;
+  }
