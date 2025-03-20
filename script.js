@@ -13,14 +13,12 @@ const wordList= [
     'shenanigans',
     'tradition',
 ]
-
 // declare variables
 let selectedWord = ''
 let displayWord =''
 let wrongGuesses = 0
 let guessedLetters =[]
 const maxMistakes = 6
-
 
 // Start Game function (runs everything)
 function startGame(level){
@@ -29,8 +27,10 @@ function startGame(level){
     guessedLetters = []
 
     selectedWord = getRandomWord(level) 
+    displayWord = '_'.repeat(selectedWord.length)
 
     updateDifficultyDisplay(level)
+    updateUI()
     
     //show game area and difficulty display, hide selection button
     document.getElementById('gameArea').classList.remove('d-none')
@@ -40,10 +40,10 @@ function startGame(level){
     document.getElementById('difficultyBox').classList.add('d-block')
 
     document.getElementById('difficultySelection').classList.add('d-none')
-
+//auto focus on input
+    document.getElementById('letterInput').focus()
 
 }
-
 
 function getRandomWord (level) {
     let filteredWords = wordList.filter ( word => {
@@ -73,7 +73,42 @@ function updateDifficultyDisplay(level){
         difficultyBox.textContent='Difficulty: Hard'
         difficultyBox.classList.add('hard')
     }
-
-
 }
 
+function updateUI() {
+    document.getElementById('wordDisplay').textContent = displayWord.split('').join('  ') //show word with spaces between it
+    
+}
+
+function guessedLetter () {
+    let inputField = document.getElementById('letterInput')// get input field
+    let guessedLetter = inputField.value.toLowerCase()// convert input to lowercase 
+
+
+    //check if input is a valid letter (A-I)
+    if(!guessedLetter.match(/^[a-z]$/)){
+        alert('Please enter a valid letter (A-Z)!') //alert user if invalid input
+        inputField.value = ''//clear input field
+        return //exit function
+    }
+
+//check if letter was already guessed
+if(guessedLetters.includes(guessedLetter)){
+    alert(`You already guessed '${guessedLetter}'.Try a different letter!`)
+    inputField.value = '' // Clear input field
+    return
+}
+
+//stored guessed letters
+    guessedLetters.push(guessedLetter)
+
+    if (selectedWord.includes(guessedLetter)){
+        updateCorrectGuess(guessedLetter)
+
+    }else {
+        updateWrongGuess(guessedLetter)
+    }
+
+    inputField.value = ''// clear input field
+    document.getElementById('letterInput').focus()//refocus input field for next guess
+}
