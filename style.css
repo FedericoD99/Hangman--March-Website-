@@ -2,3 +2,84 @@
 .easy { background-color: #d4edda; color: #155724; border: 2px solid #155724; } /* Light Green */
 .medium { background-color: #fff3cd; color: #856404; border: 2px solid #856404; } /* Light Yellow */
 .hard { background-color: #f8d7da; color: #721c24; border: 2px solid #721c24; } /* Light Red */
+
+
+
+
+.css-button-gradient--4 {
+    min-width: 130px;
+    height: 40px;
+    color: #fff;
+    padding: 5px 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    outline: none;
+    border-radius: 5px;
+    border: none;
+    background-size: 120% auto;
+    background-image: linear-gradient(315deg, #43cea2 0%, #185a9d 75%);
+  }
+  .css-button-gradient--4:hover {
+    background-position: right center;
+  }
+  .css-button-gradient--4:active {
+    top: 2px;
+  }
+
+  .css-button-gradient--8 {
+    min-width: 130px;
+    height: 40px;
+    color: #fff;
+    padding: 5px 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    outline: none;
+    border-radius: 5px;
+    border: none;
+    background-size: 120% auto;
+    background-image: linear-gradient(315deg, #7b4397 0%, #dc2430 75%);
+  }
+  .css-button-gradient--8:hover {
+    background-position: right center;
+  }
+  .css-button-gradient--8:active {
+    top: 2px;
+  }
+
+
+  .css-button-gradient--7 {
+    min-width: 130px;
+    height: 40px;
+    color: #fff;
+    padding: 5px 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    outline: none;
+    border-radius: 5px;
+    border: none;
+    background-size: 120% auto;
+    background-image: linear-gradient(315deg, #c02425 0%, #f0cb35 75%);
+  }
+  .css-button-gradient--7:hover {
+    background-position: right center;
+  }
+  .css-button-gradient--7:active {
+    top: 2px;
+  }
+
+  body {
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 50px;
+    text-align: center;
+    margin-top: 70px;
+    
+  }
