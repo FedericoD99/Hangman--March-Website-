@@ -153,3 +153,6 @@ setTimeout(() => alert(message), 100) // Display alert after short delay
 function restartGame(){
   location.reload()
 }
+
+
+
