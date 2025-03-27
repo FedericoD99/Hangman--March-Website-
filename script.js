@@ -154,5 +154,12 @@ function restartGame(){
   location.reload()
 }
 
+// Added event listener to detect "Enter" key press in the input 
+document.getElementById('letterInput').addEventListener('keypress', function(event) {
+  if (event.key === 'Enter') {
+    guessLetter(); // Calls the guessLetter function when Enter is pressed
+  }
+})
+
 
 
