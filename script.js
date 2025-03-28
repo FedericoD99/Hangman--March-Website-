@@ -141,18 +141,41 @@ function updateCorrectGuess(guessedLetter){
 }
 
 function endGame(won){
+  let messageBox = document.getElementById('endMessage');
   let message = won
-  ? '🎉 Congratulations! You guessed the word! 🍀'
-  : `❌ Game Over! The word was "${selectedWord}".`
+    ? '🎉 Congratulations! You guessed the word! 🍀'
+    : `❌ Game Over! The word was "${selectedWord}".`;
 
-setTimeout(() => alert(message), 100) // Display alert after short delay
+  messageBox.textContent = message;
+  messageBox.classList.remove('d-none');
+  messageBox.classList.add('d-block');
 
+  // Optionally, disable the input field
+  document.getElementById('letterInput').disabled = true;
 }
 
 // /Restart Game - Reloads the page to reset everything
 function restartGame(){
-  location.reload()
-}
+// Clear displayed elements
+document.getElementById('wordDisplay').textContent = '';
+document.getElementById('wrongLetters').textContent = '';
+
+// Restore shamrock image (if used)
+// document.getElementById('shamrock').src = 'imgs/shamrock6.jpg';
+
+// Show difficulty selection, hide game area
+document.getElementById('difficultySelection').classList.remove('d-none');
+document.getElementById('difficultySelection').classList.add('d-block');
+
+document.getElementById('gameArea').classList.remove('d-block');
+document.getElementById('gameArea').classList.add('d-none');
+
+document.getElementById('difficultyBox').classList.remove('d-block');
+document.getElementById('difficultyBox').classList.add('d-none');}
+
+
+
+
 
 // Added event listener to detect "Enter" key press in the input 
 document.getElementById('letterInput').addEventListener('keypress', function(event) {
@@ -160,6 +183,34 @@ document.getElementById('letterInput').addEventListener('keypress', function(eve
     guessLetter(); // Calls the guessLetter function when Enter is pressed
   }
 })
+
+
+
+
+// Load sounds
+const winSound = new Audio('sounds/win.mp3');
+const loseSound = new Audio('sounds/lose.mp3');
+
+// Function to play the win sound
+function playWinSound() {
+    winSound.play();
+}
+
+// Function to play the lose sound
+function playLoseSound() {
+    loseSound.play();
+}
+
+// Call these functions when the game is won or lost
+function checkGameStatus() {
+    if (wordGuessed) {  // When the player wins
+        playWinSound();
+        showWinMessage();  // Your function for displaying win message
+    } else if (playerLost) {  // When the player loses
+        playLoseSound();
+        showLoseMessage();  // Your function for displaying lose message
+    }
+}
 
 
 
