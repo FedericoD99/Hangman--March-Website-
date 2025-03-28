@@ -187,30 +187,4 @@ document.getElementById('letterInput').addEventListener('keypress', function(eve
 
 
 
-// Load sounds
-const winSound = new Audio('sounds/win.mp3');
-const loseSound = new Audio('sounds/lose.mp3');
-
-// Function to play the win sound
-function playWinSound() {
-    winSound.play();
-}
-
-// Function to play the lose sound
-function playLoseSound() {
-    loseSound.play();
-}
-
-// Call these functions when the game is won or lost
-function checkGameStatus() {
-    if (wordGuessed) {  // When the player wins
-        playWinSound();
-        showWinMessage();  // Your function for displaying win message
-    } else if (playerLost) {  // When the player loses
-        playLoseSound();
-        showLoseMessage();  // Your function for displaying lose message
-    }
-}
-
-
 
