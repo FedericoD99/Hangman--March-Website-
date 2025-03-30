@@ -110,12 +110,17 @@ function guessLetter () {
 }
 
 function updateWrongGuess(guessedLetter){ 
-  wrongGuesses++
-  document.getElementById('wrongLetters').textContent += `${guessedLetter}`
-  //document.getElementById('shamrock').src = `imgs/shamrock${6-wrongGuesses}.jpg`
+  wrongGuesses++;
+  document.getElementById('wrongLetters').textContent += `${guessedLetter} `;
+  
+  // Hide the corresponding health image for the wrong guess
+  if (wrongGuesses <= maxMistakes) {
+    document.getElementById(`life${wrongGuesses}`).style.display = 'none';  // Hide one clover image
+  }
 
-  if (wrongGuesses === maxMistakes){
-    endGame(false)
+  // Check if the max mistakes are reached
+  if (wrongGuesses === maxMistakes) {
+    endGame(false);
   }
 }
 
@@ -154,35 +159,126 @@ function endGame(won){
   document.getElementById('letterInput').disabled = true;
 }
 
-// /Restart Game - Reloads the page to reset everything
-function restartGame(){
-// Clear displayed elements
-document.getElementById('wordDisplay').textContent = '';
-document.getElementById('wrongLetters').textContent = '';
-
-// Restore shamrock image (if used)
-// document.getElementById('shamrock').src = 'imgs/shamrock6.jpg';
-
-// Show difficulty selection, hide game area
-document.getElementById('difficultySelection').classList.remove('d-none');
-document.getElementById('difficultySelection').classList.add('d-block');
-
-document.getElementById('gameArea').classList.remove('d-block');
-document.getElementById('gameArea').classList.add('d-none');
-
-document.getElementById('difficultyBox').classList.remove('d-block');
-document.getElementById('difficultyBox').classList.add('d-none');}
 
 
 
 
 
-// Added event listener to detect "Enter" key press in the input 
+
+
+
+// Restart Game - Resets everything
+function restartGame() {
+  // Clear displayed elements
+  document.getElementById('wordDisplay').textContent = '';
+  document.getElementById('wrongLetters').textContent = '';
+
+  // Hide end message
+  document.getElementById('endMessage').classList.add('d-none');
+  document.getElementById('endMessage').classList.remove('d-block');
+  document.getElementById('endMessage').textContent = ''; // Clear message
+
+  // Reset wrong guesses and guessed letters
+  wrongGuesses = 0;
+  guessedLetters = [];
+
+  // Hide the game area and difficulty box, show difficulty selection buttons
+  document.getElementById('gameArea').classList.remove('d-block');
+  document.getElementById('gameArea').classList.add('d-none');
+  
+  document.getElementById('difficultyBox').classList.remove('d-block');
+  document.getElementById('difficultyBox').classList.add('d-none');
+  
+  document.getElementById('difficultySelection').classList.remove('d-none');
+  document.getElementById('difficultySelection').classList.add('d-block');
+
+  // Restore all health images (shamrocks) to visible
+  for (let i = 1; i <= maxMistakes; i++) {
+    document.getElementById(`life${i}`).style.display = 'inline';  // Show all images
+  }
+
+  // Clear the Word Graveyard
+  document.getElementById('graveyardList').innerHTML = '';  // This clears the graveyard
+
+
+  // Enable the input field again
+  document.getElementById('letterInput').disabled = false;
+  document.getElementById('letterInput').value = ''; // Clear the input field
+  document.getElementById('letterInput').focus(); // Refocus the input field
+
+  // Optionally, reset the difficulty display text
+  document.getElementById('difficultyBox').textContent = ''; // Clear any difficulty text
+}
+
+// Added event listener to detect "Enter" key press in the input
 document.getElementById('letterInput').addEventListener('keypress', function(event) {
   if (event.key === 'Enter') {
     guessLetter(); // Calls the guessLetter function when Enter is pressed
   }
-})
+});
+
+
+// Declare variables for Word Graveyard
+let guessedLettersGraveyard = [];
+
+// Update Word Graveyard
+function updateGraveyard(guessedLetter) {
+  // Add the guessed letter to the graveyard list
+  guessedLettersGraveyard.push(guessedLetter);
+  
+  // Display the graveyard letters
+  let graveyardList = document.getElementById('graveyardList');
+  graveyardList.innerHTML = ''; // Clear current list
+
+  guessedLettersGraveyard.forEach(letter => {
+    let listItem = document.createElement('li');
+    listItem.textContent = letter;
+    graveyardList.appendChild(listItem);
+  });
+}
+
+// Modify guessLetter function to include updating the graveyard
+function guessLetter() {
+  let inputField = document.getElementById('letterInput'); // Get input field
+  let guessedLetter = inputField.value.toLowerCase(); // Convert input to lowercase
+
+  // Check if input is a valid letter (A-Z)
+  if (!guessedLetter.match(/^[a-z]$/)) {
+    alert('Please enter a valid letter (A-Z)!') // Alert user if invalid input
+    inputField.value = '' // Clear input field
+    return // Exit function
+  }
+
+  // Check if letter was already guessed
+  if (guessedLetters.includes(guessedLetter)) {
+    alert(`You already guessed '${guessedLetter}'. Try a different letter!`)
+    inputField.value = '' // Clear input field
+    return
+  }
+
+  // Store guessed letter
+  guessedLetters.push(guessedLetter);
+
+  // Add guessed letter to the graveyard
+  updateGraveyard(guessedLetter); // Add to Word Graveyard
+
+  // Check if guessed letter is in the selected word
+  if (selectedWord.includes(guessedLetter)) {
+    updateCorrectGuess(guessedLetter);
+  } else {
+    updateWrongGuess(guessedLetter);
+  }
+
+  inputField.value = ''; // Clear input field
+  document.getElementById('letterInput').focus(); // Refocus input field for next guess
+}
+
+
+
+
+
+
+
 
 
 

@@ -83,3 +83,25 @@
     margin-top: 70px;
     
   }
+
+  #wordGraveyard {
+    margin-top: 20px;
+    text-align: center; /* Centers the title */
+  }
+  
+  #graveyardList {
+    display: flex; /* Display items in a row */
+    flex-wrap: wrap; /* Allow wrapping if the content exceeds the container width */
+    gap: 5px; /* Space between the items */
+    justify-content: center; /* Centers the items horizontally */
+  }
+  
+  #graveyardList li {
+    font-size: 14px; /* Smaller font size for the letters */
+    list-style-type: none; /* Remove default bullet points */
+    padding: 5px 10px;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
