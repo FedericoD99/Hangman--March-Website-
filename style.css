@@ -81,27 +81,34 @@
     font-size: 50px;
     text-align: center;
     margin-top: 70px;
+    background-color: lightblue;
     
   }
 
   #wordGraveyard {
     margin-top: 20px;
-    text-align: center; /* Centers the title */
+    text-align: center; 
   }
   
   #graveyardList {
-    display: flex; /* Display items in a row */
-    flex-wrap: wrap; /* Allow wrapping if the content exceeds the container width */
-    gap: 5px; /* Space between the items */
-    justify-content: center; /* Centers the items horizontally */
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 5px; 
+    justify-content: center; 
   }
   
   #graveyardList li {
-    font-size: 14px; /* Smaller font size for the letters */
-    list-style-type: none; /* Remove default bullet points */
+    font-size: 14px; 
+    list-style-type: none; 
     padding: 5px 10px;
     background-color: #f1f1f1;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   }
+
+  h2{
+    font-size: 100px;
+  }
+
+  
   

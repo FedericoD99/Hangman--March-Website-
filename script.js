@@ -1,11 +1,11 @@
 // Word List
 const wordList = [
-  'gold',
-  'luck',
-  'clover',
+  'iron',
+  'thor',
+  'marvel',
   'rain',
-  'charm',
-  'parade',
+  'power',
+  'spider',
   'leprechaun',
   'treasure',
   'celebration',
@@ -158,12 +158,6 @@ function endGame(won){
   // Optionally, disable the input field
   document.getElementById('letterInput').disabled = true;
 }
-
-
-
-
-
-
 
 
 
