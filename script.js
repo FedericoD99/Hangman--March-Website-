@@ -20,6 +20,8 @@ let displayedWord = ''
 let wrongGuesses = 0
 let guessedLetters = []
 const maxMistakes = 6
+let wordGraveyard = []; // Stores all words guessed in previous rounds
+
 
 // Start Game Function (runs everything)
 function startGame (level) {
@@ -112,6 +114,9 @@ function guessLetter () {
 function updateWrongGuess(guessedLetter){ 
   wrongGuesses++;
   document.getElementById('wrongLetters').textContent += `${guessedLetter} `;
+
+  // Play wrong guess sound effect
+  document.getElementById('wrongSound').play();
   
   // Hide the corresponding health image for the wrong guess
   if (wrongGuesses <= maxMistakes) {
@@ -138,6 +143,10 @@ function updateCorrectGuess(guessedLetter){
   displayedWord = newDisplayedWord
   updateUI()
 
+
+   // Play correct guess sound effect
+   document.getElementById('correctSound').play();
+
   //  Check if the player has guessed all letters
   if (!displayedWord.includes('_')) {
     endGame(true)
@@ -155,8 +164,15 @@ function endGame(won){
   messageBox.classList.remove('d-none');
   messageBox.classList.add('d-block');
 
-  // Optionally, disable the input field
+
+  // Add guessed word to graveyard
+  wordGraveyard.push(selectedWord);
+  updateGraveyard();
+
+
+  //  disable the input field
   document.getElementById('letterInput').disabled = true;
+
 }
 
 
@@ -200,6 +216,9 @@ function restartGame() {
   document.getElementById('letterInput').value = ''; // Clear the input field
   document.getElementById('letterInput').focus(); // Refocus the input field
 
+
+  
+
   // Optionally, reset the difficulty display text
   document.getElementById('difficultyBox').textContent = ''; // Clear any difficulty text
 }
@@ -215,19 +234,27 @@ document.getElementById('letterInput').addEventListener('keypress', function(eve
 // Declare variables for Word Graveyard
 let guessedLettersGraveyard = [];
 
-// Update Word Graveyard
-function updateGraveyard(guessedLetter) {
-  // Add the guessed letter to the graveyard list
-  guessedLettersGraveyard.push(guessedLetter);
-  
-  // Display the graveyard letters
+function updateGraveyard() {
   let graveyardList = document.getElementById('graveyardList');
-  graveyardList.innerHTML = ''; // Clear current list
+  graveyardList.innerHTML = ''; // Clear list before updating
 
-  guessedLettersGraveyard.forEach(letter => {
+  wordGraveyard.forEach(word => {
     let listItem = document.createElement('li');
-    listItem.textContent = letter;
+    listItem.textContent = word;
     graveyardList.appendChild(listItem);
+
+
+
+
+
+
+// Apply styling based on correctness
+if (word === selectedWord && !displayedWord.includes('_')) {
+  listItem.style.backgroundColor = 'lightgreen'; // Correctly guessed word
+} else {
+  listItem.style.backgroundColor = 'lightcoral'; // Incorrectly guessed word
+}
+
   });
 }
 
@@ -266,6 +293,16 @@ function guessLetter() {
   inputField.value = ''; // Clear input field
   document.getElementById('letterInput').focus(); // Refocus input field for next guess
 }
+
+
+
+
+
+
+
+
+
+
 
 
 
