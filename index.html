@@ -15,9 +15,8 @@
 
 <body>
 
-    <main class="container text-center mt-4">
-        <h1 class="mb-4">Marvel Hangman</h1>
-
+    <main class="container text-center mt-2">
+        <img src="imgs/Marvel_Logo.svg.png" alt="Marvel Logo" width="500" height="150" style="margin-bottom: 20px;"  >
         <!-- Difficulty Selection -->
         <div class="row justify-content-center">
             <div class="col-12 col-md-8 col-lg-6">
@@ -34,24 +33,24 @@
             </div>
         </div>
 
-        <div id="difficultyBox" class="mt-3 p-3 fw-bold d-none"></div>
+        <div id="difficultyBox" class="mt-2 p-3 fw-bold d-none"></div>
 
         <!-- Game Area -->
-        <div id="gameArea" class="mt-4 d-none">
+        <div id="gameArea" class="mt-2 d-none">
             <div class="row justify-content-center">
                 <div class="col-12 col-md-8 col-lg-6">
                     <h2 id="wordDisplay" class="mb-3">_ _ _ _ _ _</h2>
 
                     <div class="row justify-content-center">
-                        <div class="col-8 col-sm-6 col-md-4">
-                            <input type="text" id="letterInput" maxlength="1" class="form-control text-center"
-                                placeholder="Enter a Letter">
-                        </div>
-                        <div class="col-auto">
-                            <button id="guessBtn" class="btn css-button-gradient--7"
-                                onclick="guessLetter()">Guess</button>
+                        <div class="col-12 col-md-8 col-lg-6">
+                            <div class="d-flex justify-content-center align-items-center gap-2">
+                                <input type="text" id="letterInput" maxlength="1" class="form-control text-center"
+                                    placeholder="Enter a Letter" style="max-width: 150px;" style="margin-bottom: 20px;">
+                                <button id="guessBtn" class="btn css-button-gradient--7" onclick="guessLetter()">Guess</button>
+                            </div>
                         </div>
                     </div>
+                    
 
                     <!-- End Message -->
                     <div class="row justify-content-center">
@@ -60,15 +59,12 @@
                         </div>
                     </div>
 
-
-
-
-                    <p id="wrongLetters" class="fw-bold text-danger mt-3">Wrong Guesses: </p>
+                    <p id="wrongLetters" class="fw-bold text-danger mt-2">Wrong Guesses: </p>
                 </div>
             </div>
 
             <!-- Word Graveyard -->
-            <div class="row justify-content-center mt-3">
+            <div class="row justify-content-center mt-2">
                 <div class="col-12 col-md-8 col-lg-6">
                     <div id="wordGraveyard" class="p-3 border rounded">
                         <h3>Word Graveyard</h3>
@@ -81,7 +77,7 @@
 
 
             <!-- Health Bar -->
-            <div class="row justify-content-center mt-3">
+            <div class="row justify-content-center mt-2">
                 <div class="col-12 col-md-8">
                     <div id="healthBar" class="d-flex justify-content-center flex-wrap gap-2">
                         <img src="imgs/cap.jpg" class="health-img" id="life1">
@@ -89,7 +85,7 @@
                         <img src="imgs/deadpool.webp" class="health-img" id="life3">
                         <img src="imgs/wolverine.webp" class="health-img" id="life4">
                         <img src="imgs/spiderman.webp" class="health-img" id="life5">
-                        <img src="imgs/thor.webp" class="health-img" id="life6">
+                        <img src="imgs/Chris_Hemsworth_as_Thor.jpg" class="health-img" id="life6">
                     </div>
                 </div>
             </div>
@@ -97,7 +93,7 @@
 
 
             <!-- Restart Button -->
-            <div class="row justify-content-center mt-4">
+            <div class="row justify-content-center mt-1">
                 <div class="col-12 col-md-6">
                     <button id="restartBtn" class="btn css-button-gradient--8 w-100" onclick="restartGame()">Restart
                         Game</button>
@@ -107,9 +103,8 @@
     </main>
 
     <!-- Sound Effects -->
-    <audio id="correctSound" src="imgs/preview.mp3"></audio>
-    <audio id="wrongSound" src="sounds/wrong.mp3"></audio>
-
+    <audio id="correctSound" src="imgs/mixkit-achievement-bell-600.wav"></audio>
+    <audio id="wrongSound" src="imgs/mixkit-horror-lose-2028.wav"></audio>
 
 
 

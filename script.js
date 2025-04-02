@@ -3,15 +3,15 @@ const wordList = [
   'iron',
   'thor',
   'marvel',
-  'rain',
-  'power',
+  'hulk',
+  'venom',
   'spider',
-  'leprechaun',
-  'treasure',
-  'celebration',
-  'greenery',
-  'shenanigans',
-  'tradition'
+  'doctordoom',
+  'galactus',
+  'abomination',
+  'mysterio',
+  'mattmurdock',
+  'wolverine'
 ]
 
 //decare variables
@@ -245,9 +245,6 @@ function updateGraveyard() {
 
 
 
-
-
-
 // Apply styling based on correctness
 if (word === selectedWord && !displayedWord.includes('_')) {
   listItem.style.backgroundColor = 'lightgreen'; // Correctly guessed word
@@ -293,6 +290,8 @@ function guessLetter() {
   inputField.value = ''; // Clear input field
   document.getElementById('letterInput').focus(); // Refocus input field for next guess
 }
+
+
 
 
 
